@@ -6,12 +6,12 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   end
   
   test "should get home" do
-    get static_pages_home_url
+    get home_path
     assert_response :success
   end
 
   test "should get show" do
-    get static_pages_show_url
+    get show_path
     assert_response :success
   end
 
