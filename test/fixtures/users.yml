@@ -3,3 +3,30 @@ tes:
   email: 121212a@ugs.kochi-tech.ac.jp
   login_name: 121212a
   password_digest: <%= User.digest('password') %>
+  admin: true
+  
+tes2:
+  name: test_name2
+  email: 212121b@ugs.kochi-tech.ac.jp
+  login_name: 212121b
+  password_digest: <%= User.digest('password') %>
+  
+tes3:
+  name: test_name3
+  email: 131313c@ugs.kochi-tech.ac.jp
+  login_name: 131313c
+  password_digest: <%= User.digest('password') %>
+  
+tes4:
+  name: test_name4
+  email: 141414d@ugs.kochi-tech.ac.jp
+  login_name: 141414d
+  password_digest: <%= User.digest('password') %>
+  
+<% 30.times do |n| %>
+user_<%= n %>:
+  name:  <%= "User #{n}" %>
+  email: <%= "#{100001+n}@ugs.kochi-tech.ac.jp" %>
+  login_name: <%= "#{100001+n}" %>
+  password_digest: <%= User.digest('password') %>
+<% end %>
