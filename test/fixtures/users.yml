@@ -1,0 +1,5 @@
+tes:
+  name: test_name
+  email: 121212a@ugs.kochi-tech.ac.jp
+  login_name: 121212a
+  password_digest: <%= User.digest('password') %>
