@@ -1,4 +1,3 @@
-# ユーザー
 User.create!(name:  "admin_user",
              email: "100000a@ugs.kochi-tech.ac.jp",
              login_name: "100000a",

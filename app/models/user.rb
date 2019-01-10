@@ -12,7 +12,7 @@ class User < ApplicationRecord
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 30 }
   validates :login_name, presence: true, length: { maximum: 30 }, uniqueness: true
-  VALID_EMAIL_REGEX = /[\d]+[a-z]@ugs\.kochi-tech\.ac\.jp/i
+  VALID_EMAIL_REGEX = /[\w+\-\.]+@((ugs|gs|ml).|)kochi-tech\.ac\.jp/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
@@ -69,6 +69,14 @@ class User < ApplicationRecord
   # 現在のユーザーがフォローしてたらtrueを返す
   def following?(other_user)
     following.include?(other_user)
+  end
+  
+  def self.search(search) #ここでのself.はUser.を意味する
+    if search
+      where(['name LIKE ?', "%#{search}%"]) #検索とnameの部分一致を表示。User.は省略
+    else
+      all #全て表示。User.は省略
+    end
   end
   
 end
