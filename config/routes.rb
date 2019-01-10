@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   get  '/show',    to: 'static_pages#show'
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
-  resources :users
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+  resources :users
+  resources :microposts,          only: [:create, :destroy]
 end

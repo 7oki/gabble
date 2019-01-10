@@ -1,6 +1,6 @@
 User.create!(name:  "admin_user",
-             email: "999999z@ugs.kochi-tech.ac.jp",
-             login_name: "999999z",
+             email: "100000a@ugs.kochi-tech.ac.jp",
+             login_name: "100000a",
              password:              "foobar",
              password_confirmation: "foobar",
              admin: true)
@@ -15,4 +15,10 @@ User.create!(name:  "admin_user",
                login_name: login_name,
                password:              password,
                password_confirmation: password)
+end
+
+users = User.order(:created_at).take(6)
+50.times do
+  content = Faker::Lorem.sentence(5)
+  users.each { |user| user.microposts.create!(content: content) }
 end
