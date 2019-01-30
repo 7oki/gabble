@@ -7,18 +7,35 @@
         <%= @user.name %>
       </h1>
     </section>
+    <section class='profile_show'>
+      <%= render 'shared/profile_show' %>
+    </section>
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
+    <div class="follow_btn"><%= render 'follow_form' if logged_in? %></div>
+    
+    <% if current_user != @user %>
+      <h3>メッセージを送る</h3>
+      <div class="message_form">
+       <%= render 'messages/message_form',
+         {from_user: current_user, to_user: @user, room_id: @room_id} %>
+      </div>
+    <% end %>
   </aside>
+
+
+  
+
+  
   <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <h3>投稿 (<%= @user.microposts.count %>)</h3>
+      
       <ol class="microposts">
         <%= render @microposts %>
       </ol>
-      <%= will_paginate @microposts %>
+      <%= will_paginate @microposts , { :previous_label => '&lt 前へ', :next_label => '次へ &gt' }  %>
     <% end %>
   </div>
 </div>

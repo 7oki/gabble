@@ -1,0 +1,29 @@
+<% provide(:title, "メッセージ") %>
+<div class="row">
+  <aside class="col-md-4">
+    <div class='title'>
+      <h1>メッセージ</h1>
+    </div>
+    <section class="user_info">
+      <%= render partial: 'messages/room', collection: @rooms %>
+    </section>
+  </aside>
+  <aside class='col-md-8'>
+    <section class="message_box">
+      <div id="messages">
+        <%= render @messages %>
+      </div>
+    </section>
+    <script type="text/javascript">
+      var height = 0;
+      $("div.message").each( function() {
+        height += ($(this).height());
+      });
+      $('section.message_box').scrollTop(height);
+    </script>
+    <div class="message_form">
+      <%= render 'messages/message_form',
+        {from_user: current_user, to_user: @user, room_id: @room_id} %>
+    </div>
+  </aside>
+</div>

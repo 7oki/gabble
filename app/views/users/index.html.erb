@@ -1,10 +1,27 @@
-<% provide(:title, 'All users') %>
-<h1>All users</h1>
+<% provide(:title, 'ユーザー一覧') %>
 
-<%= will_paginate %>
 
-<ul class="users">
-  <%= render @users %>
-</ul>
-
-<%= will_paginate %>
+<div class="row">
+  <aside class="col-md-4">
+    <div class='user_title'>
+    <h1>ユーザー一覧</h1>
+    </div>
+    <!--  検索拡張機能  -->
+    <div class='user_search'>
+    <%= form_tag users_path, :method => 'get' do %>
+      <%= text_field_tag :search,  params[:search], placeholder: "ユーザー検索" %>
+      <%= submit_tag '検索', :name => nil %>
+    <% end %>
+    </div>
+  </aside>
+  
+  <div class="col-md-8">
+    <%= will_paginate @customers, { :previous_label => '&lt 前へ', :next_label => '次へ &gt' }  %>
+    <!-- <ul class="users"> -->
+    <section class="users">
+    <%= render @users %>
+    <!-- </ul>-->
+    </section>
+    <%= will_paginate @customers, { :previous_label => '&lt 前へ', :next_label => '次へ &gt' }  %>
+  </div>
+</div>

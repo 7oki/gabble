@@ -1,0 +1,7 @@
+<%= form_tag("/microposts/#params[:id]/comments") do |f| %>
+
+  <div class="field">
+    <%= f.text_area :content, placeholder: "コメントを入力..." %>
+  </div>
+  <%= f.submit "投稿", class: "btn btn-primary" %>
+<% end %>

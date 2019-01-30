@@ -1,0 +1,42 @@
+<% provide(:title, "メッセージ") %>
+<div class="row">
+  
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+    <section class='profile_show'>
+      <%= render 'shared/profile_show' %>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+    <div class="follow_btn"><%= render 'follow_form' if logged_in? %></div>
+  </aside>
+
+  
+  <aside class="col-md-8">
+      <h3>メッセージ</h3>
+       <% if !current_user?(@rooms) && logged_in? %>
+      <section class="message_box">
+        <div id="messages">
+          <%= render @messages %>
+        </div>
+      </section>
+      <script type="text/javascript">
+        var height = 0;
+        $("div.message").each( function() {
+          height += ($(this).height());
+        });
+        $('section.message_box').scrollTop(height);
+      </script>
+      <div class="message_form">
+       <%= render 'messages/message_form',
+         {from_user: current_user, to_user: @user, room_id: @room_id} %>
+      </div>
+      <% end %>
+  </aside>
+</div>

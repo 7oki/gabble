@@ -1,0 +1,37 @@
+<div class="col-md-4">
+</div>
+<div class="col-md-8">
+  <div class="notices_detail">
+  <%= link_to gravatar_for(@notices.user, size: 50), @notices.user %>
+  
+  <span class="user">申請者:<%= link_to @notices.user.name, @notices.user %></span>
+  <span class="content">
+    投稿内容:
+    <%= @notices.content %>
+    <%= image_tag @notices.picture.url if @notices.picture? %>
+  </span>
+  <span class="reason">
+    申請理由:
+    <%= @notices.reason %>
+  </span>
+ 
+  <span class="timestamp">
+    <%= time_ago_in_words(@notices.created_at) %>前
+  </span>
+
+  <% if @notices.treated == false %>
+    </div>
+      <%= link_to "受理", microposts_path(
+        micropost:{
+        picture: @notices.picture,
+        content: @notices.content
+         }
+        ), 
+        :method => :post, 
+        class: 'btn btn-default'
+      %>
+      <%= link_to "拒否", notice_reject_path(@notices.treated: true),
+        class: 'btn btn-default',
+        :method => :patch %>
+　  </div>
+　<% end %>

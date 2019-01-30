@@ -1,0 +1,18 @@
+<div class="row">
+  <aside class="col-md-4">
+    <div class='title'>
+      <h1>申請一覧</h1>
+    </div>
+    
+    <div class='request_menu'>
+      <li><%= link_to "全体通知", notices_path %></li>
+      <li><%= link_to "アカウント作成", accounts_path %></li>
+    </div>
+  </aside>
+  
+
+  <div class="col-md-8 request_row">
+    <h3>全体通知申請一覧</h3>
+    <%= render 'shared/notice_feed' %>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="col-md-4">
+</div>
+<div class="col-md-8">
+  <div class="account_detail">
+  <%= link_to gravatar_for(@accounts.user, size: 50), @accounts.user %>
+  <span class="user">
+    申請者:
+    <%= link_to @accounts.user.name, @accounts.user %></span>
+      <span class="name">
+        作成するアカウント名:
+        <%= @accounts.name %>
+      </span>
+  </span>
+  <span class="reason">
+    申請理由:
+    <%= @accounts.reason %>
+  </span>
+ 
+　<span class="timestamp">
+    <%= time_ago_in_words(@accounts.created_at) %>前
+  </span>
+  </div>
+  
+  <% if @accounts.treated == false %>
+    <%= link_to "受理", signup_designated_path(
+      user:{
+      name: @accounts.id,
+      picture: @accounts.picture,
+      email: @accounts.user.email
+      }
+      ),
+      class: 'btn btn-default'
+      %>
+    
+    <%= link_to "拒否",
+      '/accounts/:account_id/reject',
+      class: 'btn btn-default',
+      :method => :patch
+    %>
+  <% end %>
+</div>

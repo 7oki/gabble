@@ -1,0 +1,12 @@
+<% if @notice_feed_items.any? %>
+  <ol class="notices">
+    <%= render @notice_feed_items %>
+  </ol>
+  <%= will_paginate @notice_feed_items, { :previous_label => '&lt 前へ', :next_label => '次へ &gt' } %>
+  
+  
+<% else %>
+  <span >
+    全体通知申請はありません。
+  </span>
+<% end %>

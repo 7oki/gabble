@@ -1,8 +1,20 @@
 require 'test_helper'
 
 class UsersSignupTest < ActionDispatch::IntegrationTest
-
+  
+  def setup
+    @user = users(:tes2)
+    @admin_user = users(:tes)
+  end
+  
+  test "invalid signup when logged in as not admin" do
+    log_in_as(@user)
+    get signup_path
+    assert_redirected_to root_path
+  end
+  
   test "invalid signup information" do
+    log_in_as(@admin_user)
     get signup_path
     assert_no_difference 'User.count' do
       post signup_path, params: { user: { name:  "",
@@ -15,6 +27,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   end
   
   test "valid signup information" do
+    log_in_as(@admin_user)
     get signup_path
     assert_difference 'User.count', 1 do
       post users_path, params: { user: { name:  "Example User",

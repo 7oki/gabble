@@ -1,0 +1,12 @@
+<% provide(:title, "メッセージ") %>
+<div class="row">
+  <aside class="col-md-4">
+    <div class='title'>
+      <h1>メッセージ</h1>
+    </div>
+    <section class="user_info">
+      <%= render partial: 'messages/room', collection: @rooms %>
+    </section>
+  
+  </aside>
+</div>

@@ -1,0 +1,13 @@
+<% @notifications.each do |n| %>
+  <% if n.type == 1 %>
+    <!-- コメント -->
+    <%= link_to "コメントが来ました", "/microposts/#{n.from_id}" %>
+  <% elsif n.type == 2 %>
+    <!-- メッセージ -->
+    <%= link_to "メッセージが来ました", "/messages/#{n.from_id}" %>
+  <% end %>
+  <span class="timestamp">
+    <%= time_ago_in_words(n.created_at) %>前
+  </span>
+  <br>
+<% end %>

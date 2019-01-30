@@ -1,0 +1,11 @@
+<% if @account_feed_items.any? %>
+  <ol class="accounts">
+    <%= render @account_feed_items %>
+  </ol>
+  <%= will_paginate @account_feed_items, { :previous_label => '&lt 前へ', :next_label => '次へ &gt' } %>
+  
+<% else %>
+  <span >
+    アカウント作成申請はありません。
+  </span>
+<% end %>

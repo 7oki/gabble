@@ -1,0 +1,8 @@
+  <% if logged_in? %>
+      <%= render 'accounts/account_request'%>
+   <!--ログインしていない-->
+  <% else %>
+  <div class="center jumbotron">
+    <h1>Welcome to Gabble</h1>
+  </div>
+  <% end %>

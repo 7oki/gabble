@@ -1,0 +1,28 @@
+<% provide(:title, "お気に入り") %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+    <section class='profile_show'>
+      <%= render 'shared/profile_show' %>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+    <div class="follow_btn"><%= render 'follow_form' if logged_in? %></div>
+  </aside>
+  
+  <div class="col-md-8">
+    <% if @likes.any? %>
+      <h3>お気に入り一覧</h3>
+      <ol class="microposts">
+        <%= render @likes %>
+      </ol>
+      <%= will_paginate @likes, { :previous_label => '&lt 前へ', :next_label => '次へ &gt' } %>
+    <% end %>
+  </div>
+</div>

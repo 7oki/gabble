@@ -6,11 +6,16 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(login_name: params[:session][:login_name])
     if user && user.authenticate(params[:session][:password])
-      log_in user
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_back_or user
+      if !current_user && user.official
+        flash.now[:danger] = '生徒アカウントにログインしてください'
+        render 'new'
+      else
+        log_in user
+        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+        redirect_back_or user
+      end
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:danger] = 'login_nameとpasswordの組み合わせが一致しません'
       render 'new'
     end
   end

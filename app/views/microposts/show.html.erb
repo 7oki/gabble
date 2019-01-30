@@ -1,0 +1,30 @@
+<div class='row'>
+  <aside class="col-md-4">
+    <section class="comment_form">
+    <%= form_for [@micropost, @comment] do |f| %>
+    <div class="field">
+      <%= f.text_area :content , placeholder: "投稿へのコメントを入力..." %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+      <%= f.hidden_field :micropost_id, :value => @micropost.id %>
+    </div>
+      
+      <%= f.submit 'コメントする', class: "btn btn-primary" %>
+    <% end %>   
+    </section>
+  </aside>
+  
+ 
+  <div class="col-md-8">
+    <div class="microposts">
+      <%= render @microposts %>
+    </div>
+  </div>
+  
+  
+  <div class="col-md-8">
+    <h2>コメント一覧</h2>
+    <div class="microposts">
+      <%= render @comments %>
+    </div>
+  </div> 
+</div>

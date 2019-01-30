@@ -1,0 +1,47 @@
+<div class="row">
+  <aside class="col-md-4">
+    <div class='title'>
+      <h1>申請フォーム</h1>
+    </div>
+    
+    <div class='request_menu'>
+      <li><%= link_to "全体通知", new_notice_path %></li>
+      <li><%= link_to "アカウント作成", new_account_path %></li>
+    </div>
+  </aside>
+  
+  <div class="col-md-8 request_row">
+    <h3>全体通知申請</h3>
+    <%= form_for(@notice) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    ・全体通知したい内容を入力してください。
+    <div class="field">
+      <%= f.text_area :content, placeholder: "全体通知したい内容を入力...", class:'request_form' %>
+    </div>
+    ・全体通知に画像を添付したい場合は画像ファイルを選択してください。
+    <span class="picture">
+      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+    </span>
+  
+    ・全体通知する理由を入力してください。
+    <div class="field">
+      <%= f.text_area :reason, placeholder: "全体通知申請理由を入力...", class:'request_form' %>
+    </div>
+    <%= f.submit "申請する", class: "btn btn-primary" %>
+    <% end %>
+
+    <script type="text/javascript">
+      $('#notice_picture').bind('change', function() {
+        var size_in_megabytes = this.files[0].size/1024/1024;
+        if (size_in_megabytes > 5) {
+          alert('Maximum file size is 5MB. Please choose a smaller file.');
+        }
+      });
+      // $(function(){
+      //   var countDown=140;
+      //   $()
+      });
+    </script>
+
+  </div>
+</div>

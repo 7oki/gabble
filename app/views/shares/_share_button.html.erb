@@ -1,0 +1,17 @@
+<% @share = Share.find_by(user_id: current_user.id, micropost_id: micropost.id) %>
+<% if @share %>
+  <%= button_to micropost_share_path(@share, micropost_id: micropost.id), method: :delete, id: "share-button", remote: true do %> 
+    <%= image_tag("icon_green_share.png") %>
+    <span>
+      <%= micropost.shares_count %>
+    </span>
+  <% end %>
+
+<% else %>
+  <%= button_to micropost_shares_path(micropost), remote: true do %>
+    <%= image_tag("icon_share.png") %>
+    <span>
+      <%= micropost.shares_count %>
+    </span>
+  <% end %>
+<% end %>

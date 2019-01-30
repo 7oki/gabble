@@ -15,6 +15,7 @@ $gray-medium-light: #eaeaea;
 
 body {
   padding-top: 60px;
+  background-color:#CBFFD3;
 }
 
 section {
@@ -62,6 +63,24 @@ p {
 
 /* header */
 
+.icon{
+  float:left;
+  margin-top: 4px;
+}
+
+header.navbar{
+  background-color:green;
+  border-bottom:hidden;
+}
+
+.nav .open>a.dropdown-toggle,
+.nav .open>a.dropdown-toggle:focus,
+.nav .open>a.dropdown-toggle:hover,
+.nav>li>a.dropdown-toggle:focus,
+.nav>li>a.dropdown-toggle:hover {
+    background-color: green;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -75,6 +94,12 @@ p {
     color: white;
     text-decoration: none;
   }
+}
+
+.search-nav {
+  width: 200px;
+  padding-top: 9px;
+  margin-left:50px;
 }
 
 /* footer */
@@ -118,6 +143,7 @@ footer {
 aside {
   section.user_info {
     margin-top: 20px;
+    background-color:white;
   }
   section {
     padding: 10px 0;
@@ -132,28 +158,33 @@ aside {
       line-height: 1;
     }
     h1 {
-      font-size: 1.4em;
+      font-size: 2em;
       text-align: left;
       letter-spacing: -1px;
       margin-bottom: 3px;
-      margin-top: 0px;
+      margin-top: 7px;
     }
   }
 }
 
 .gravatar {
   float: left;
-  margin-right: 10px;
+  margin: 10px;
 }
 
 .gravatar_edit {
-  margin-top: 15px;
+  margin-top: 5px;
+  float: left;
+  width:100%;
 }
 
 .stats {
   overflow: auto;
-  margin-top: 0;
-  padding: 0;
+  background-color:white;
+  /*margin-top: 0;
+  padding: 0;*/
+  margin-top: 5px;
+  padding: 5px 10px;
   a {
     float: left;
     padding: 0 10px;
@@ -239,12 +270,131 @@ input {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+    border-top: 1px solid $gray-lighter;
   }
 }
 
 /* microposts */
 
 .microposts {
+  list-style: none;
+  padding: 0;
+  li {
+    clear:both;
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 70px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+  .post_head {
+    float: left;
+    margin-left: 10px;
+  }
+  .post {
+    clear: both;
+  }
+  .post_foot {
+    float:left;
+    width: 100%;
+    .post_foot_item {
+      display: block;
+      float: left;
+      margin-left: 70px;
+    }
+  }
+  .share {
+    color: gray;
+  }
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+span.picture {
+  margin-top: 10px;
+  input {
+    border: 0;
+  }
+}
+
+/* timeline */
+.col-md-8{
+  background-color: white;
+  margin-top: 20px;
+}
+
+.follow_btn {
+  margin-top: 5px;
+}
+
+/* microposts*/
+.micropost-user-name{
+  margin-left:0px;
+}
+
+.profile_show {
+  background-color: white;
+  padding: 10px;
+  margin-top: 5px;
+}
+/*　micropost_form */
+.micropost_form {
+  background-color:white;
+  padding: 10px 5px 5px 5px;
+  margin-top: 5px;
+}
+
+/* user_name post */
+.font_color {
+  color: black;
+}
+
+/* users */
+.user_title {
+  background-color: white;
+  padding: 5px;
+  margin-top: 20px;
+}
+
+.user_search {
+  background-color: white;
+  padding: 10px;
+  margin-top: 10px;
+}
+/* profile */
+.col-md-6 {
+  background-color: white;
+  padding: 15px;
+}
+.profile_edit {
+　clear: both;
+}
+/* notice */
+.notices {
   list-style: none;
   padding: 0;
   li {
@@ -273,18 +423,150 @@ input {
     margin-right: 10px;
     margin-top: 5px;
   }
-}
-
-aside {
-  textarea {
-    height: 100px;
-    margin-bottom: 5px;
+  .detail {
+    display: block;
+    clear: both;
+    margin-left: 10px;
+    padding: 5px 20px 5px 20px;
   }
 }
-
-span.picture {
+/* accounts */
+.accounts {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .name {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .reason {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+  .detail {
+    display: block;
+    clear: both;
+    margin-left: 10px;
+    padding: 5px 20px 5px 20px;
+  }
+}
+.request_form {
+  height:100px;
+}
+.request_row {
+  padding-bottom: 10px;
+  
+  .picture{
+    display: block;
+    padding-bottom: 20px;
+  }
+}
+.title {
+  background-color: white;
+  padding: 5px;
+  margin-top: 20px;
+}
+.request_menu {
+  background-color: white;
   margin-top: 10px;
-  input {
-    border: 0;
+  padding: 20px 20px 20px 60px;
+}
+.notices_detail {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
   }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  .reason {
+   }
+  .detail{
+    
+  }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+
+/*message*/
+section.message_box {
+  padding: 10px;
+  border: 1px solid $gray-light;
+  overflow: scroll;
+  #messages {
+    height: 400px;
+  }
+}
+
+div.message_form {
+  padding-top: 10px;
+}
+
+#message_sender {
+  font-size: 1.1em;
+}
+
+#message_content {
+  font-size: 1.0em;
+}
+
+.comment_form {
+  background-color:white;
+  padding: 10px 5px 5px 5px;
+  margin-top: 20px;
+  .field {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+
+.accounts_making_info {
+  background-color:white;
+  margin-top: 20px;
 }

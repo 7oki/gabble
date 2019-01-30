@@ -1,0 +1,10 @@
+<% user = User.find_by(id: room.user2_id) %>
+<% room_id = message_room_id(current_user, user) %>
+<% content = Message.where(room_id: room_id).last.content %>
+<ol class="microposts">
+  <div class='post'>
+    <%= link_to gravatar_for(user, size: 50), "/messages/#{user.id}" %>
+    <span class="user"><%= link_to user.name, "/messages/#{user.id}" %></span>
+    <%= link_to(content, "/messages/#{user.id}", class:'font_color') %>
+  </div>
+</ol>

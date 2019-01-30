@@ -1,0 +1,31 @@
+  <li id="notice-<%= notice.id %>">
+  <%= link_to gravatar_for(notice.user, size: 50), notice.user %>
+  申請者　:
+  <span class="user"><%= link_to notice.user.name, notice.user %></span>
+  <span class="content">
+    投稿内容:
+    <%= notice.content %>
+     <%= image_tag notice.picture.url if notice.picture? %>
+  </span>
+  <span class="reason">
+    申請理由:
+    <%= notice.reason %>
+  </span>
+ 
+  
+  <span class="detail">
+    <%= link_to "申請詳細", notice_path(notice) ,class: 'btn btn-default'%>
+  </span>
+  
+  <% if notice.treated == false %>
+  未処理
+  <% else %>
+  処理済
+  <% end %>
+　
+  <span class="timestamp">
+    <%= time_ago_in_words(notice.created_at) %>前
+  </span>
+  
+
+  

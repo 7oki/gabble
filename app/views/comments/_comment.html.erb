@@ -1,0 +1,18 @@
+<% user = User.find_by(id: comment.user_id) %>
+
+<li id="micropost-<%= comment.id %>">
+  <%= link_to gravatar_for(comment.user, size: 50), comment.user %>
+  <span class="user"><%= link_to comment.user.name, comment.user %></span>
+  <span class="content">
+    <div class='font_color'><%= comment.content %></div>
+  </span>
+  
+  <span class="timestamp">
+    <%= time_ago_in_words(comment.created_at) %>前
+    <% if current_user?(comment.user) %>
+      <%= link_to "削除", micropost_comment_path(comment), method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+  
+</li>
