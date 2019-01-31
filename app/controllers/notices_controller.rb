@@ -21,7 +21,7 @@ class NoticesController < ApplicationController
   end
   
   def show
-  @notices = Notice.find_by(id: params[:id])
+    @notice = Notice.find_by(id: params[:id])
   end
   
   def reject

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   get  '/signup_designated',  to: 'users#new_designated'
   post '/signup_designated',  to: 'users#create_designated'
-  post '/notices/:notice_id/reject', to: 'notices#reject', as: 'notice_reject'
+  patch '/notices/:notice_id/reject', to: 'notices#reject', as: 'notice_reject'
   patch '/accounts/:account_id/reject', to: 'accounts#reject', as: 'account_reject' 
   
   resources :users do

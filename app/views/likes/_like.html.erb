@@ -1,21 +1,33 @@
 <li id="micropost-<%= like.micropost_id %>">
   <% micropost = Micropost.find_by(id: like.micropost_id) %>
+  <div class='post'>
   <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
   <span class="content">
     <!--投稿詳細画面へのリンク-->
-    <%= link_to(micropost.content,"/microposts/#{micropost.id}", class:'font_color') %>
+    <%= link_to(micropost.content, micropost, class:'font_color') %>
     <%= image_tag micropost.picture.url if micropost.picture? %>
   </span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-    <% if current_user?(micropost.user) %>
-      <%= link_to "delete", micropost, method: :delete,
-                                       data: { confirm: "You sure?" } %>
-    <% end %>
-  </span>
   
-  <!--like拡張機能-->
-  <%= render partial: 'likes/like_button', locals: { micropost: micropost, likes: @likes } %>
-
+</div>  
+  <div class='post_foot'>
+    <span class="timestamp">
+      <%= time_ago_in_words(micropost.created_at) %>前
+      
+    </span>
+    <span class="post_foot_item">
+        <!--like拡張機能-->
+        <%= render partial: 'likes/like_button', locals: { micropost: micropost, likes: @likes } %>
+      </span>
+      <span class="post_foot_item">
+        <!--RT機能-->
+        <%= render partial: 'shares/share_button', locals: {micropost: micropost, shares: @shares} %>
+     </span>
+     <span class="post_foot_item">
+    <% if current_user?(micropost.user) || current_user.admin? %>
+        <%= link_to "削除", micropost, method: :delete,
+                                         data: { confirm: "You sure?" } %>
+      <% end %>
+      </span>
+  </div>
 </li>

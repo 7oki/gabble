@@ -13,7 +13,6 @@ class AccountsController < ApplicationController
     @account = current_user.accounts.build(accounts_params)
     if @account.save
       flash[:success] = "アカウント作成申請を行いました"
-      
       redirect_to root_url
     else
       @account_feed_items = []
