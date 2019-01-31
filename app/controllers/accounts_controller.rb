@@ -25,9 +25,7 @@ class AccountsController < ApplicationController
   end
   
   def reject
-    @account.update_attributes(accounts_params)
-    flash[:success] = @accounts.reason
-    #"アカウント作成申請を拒否しました"
+    flash[:success] = #"アカウント作成申請を拒否しました"
     redirect_to root_url
   end
   

@@ -25,7 +25,6 @@ class NoticesController < ApplicationController
   end
   
   def reject
-    @notice.update_attributes(notices_params)
     flash[:success] = "全体通知申請を拒否しました"
     redirect_to root_url
   end
