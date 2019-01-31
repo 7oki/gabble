@@ -1,6 +1,9 @@
 # README
 
-Twitter風サイト(作成中)
+KUT生限定のTwitter風サイトのソースコードです
+
+以下URLで動いています
+https://kut-gabble.herokuapp.com/
 
 ## ライセンス
 
