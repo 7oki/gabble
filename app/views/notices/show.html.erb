@@ -30,13 +30,6 @@
         :method => :post, 
         class: 'btn btn-default'
       %>
-      <%= link_to "拒否", notice_reject_path(notice:{
-        treated: true,
-        content: @notice.content,
-        reason: @notice.reason,
-        picture: @notice.picture
-      }),
-        class: 'btn btn-default',
-        :method => :patch %>
+
 　  </div>
 　<% end %>
